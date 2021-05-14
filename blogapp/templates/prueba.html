@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>CHAB AIRCRAFT PARTS</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Core Stylesheet -->
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="{% static 'css/responsive/responsive.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="caviar-load"></div>
+      <div class="preload-icons">
+          <img class="preload-1" src="{% static 'img/core-img/preload-5.png' %}" alt="">
+          <img class="preload-2" src="{% static 'img/core-img/preload-4.png' %}" alt="">
+          <img class="preload-3" src="{% static 'img/core-img/preload-6.png' %}" alt="">
+      </div>
+  </div>
+
+    <!-- ***** Search Form Area ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header_area" id="header">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 h-100">
+                    <nav class="h-100 navbar navbar-expand-lg align-items-center">
+                      <a  class="navbar-brand ml-auto"><img class="img-fluid" src="{% static 'img/bg-img/Logo.png '%}" width="200" height="140"></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#caviarNav" aria-controls="caviarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
+                        <div class="collapse navbar-collapse" id="caviarNav">
+                            <ul class="navbar-nav ml-auto" id="caviarMenu">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                                </li> 
+                             
+                                  
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Breadcumb Area Start ***** -->
+    <div class="breadcumb-area bg-img" style="background-image: url({% static 'img/bg-img/30.jpg' %})">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-content">
+                        <h2>Contact</h2>
+                        <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+1 (803) 525-9927">+1 (803) 525-9927</a> <a href="tel:+1 (929) 346-7530">+1 (929) 346-7530</a></p>
+                        <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+57 (300) 594-0508">Bogotà Colombia +57 (300) 594-0508</a></p>
+                        <p><i class="fa fa-map-marker" aria-hidden="true"></i>17275 Collins Avenue, Sunny Isles Beach, Florida 33160<br>  Miami, United States</p>
+                        <p><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:sales@chabaircraftparts.com">sales@chabaircraftparts.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Breadcumb Area End ***** -->
+
+    <!-- ***** Contact Area Start ***** -->
+    <div class="caviar-contact-area d-md-flex align-items-center" id="contact">
+        <div class="contact-form-area d-flex justify-content-end">
+            <div class="contact-form">
+                <div class="contact-form-title">
+                    <p>CONTACT US</p>
+                </div>
+                <form action="/send/" method="POST">{% csrf_token %}
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" class="form-control" placeholder="Your Name" name="txtasunto">
+                        </div>
+                        <div class="col-12">
+                            <input type="email" class="form-control" placeholder="Your Email" name="txtemail">
+                        </div>
+                        <div class="col-12">
+                            <textarea name="mensaje" class="form-control" id="Message" cols="30" rows="10" placeholder="Your Message"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-get-started"><span></span> Send Mail</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <title>Search{% if query %} Results{% endif %}</title>
+            <div class="card">
+                <div class="card-header p-3 mb-2 bg-info text-white">
+                  Chab Aircraft Parts LLC. - For more info contact us!!!
+                </div>
+                <div class="card-body">
+                    {% if query %}
+                  <blockquote class="blockquote mb-0">
+                    <h6 class="text-center">Results for part Part-Number: "{{ query|escape }}"</h6>
+                    {% if results %}
+                    
+                        {% for c in results %}
+                        <div class="col-6">
+                        <h3>{{ c.description }}</h3>
+                        {% endfor %}
+                        </div>
+                        {% else %}
+                          <h1>No  found</h1>
+                         {% endif %}
+                        {% endif %}
+                    <footer class="blockquote-footer">
+                        Send mail and <cite title="Source Title">Quote request</cite></footer>
+                  </blockquote>
+                </div>
+              </div>
+        </div>
+      
+        
+       
+    </div>
+    <!-- ***** Contact Area End ***** -->
+
+    <!-- ***** Footer Area Start ***** -->
+    <footer class="caviar-footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="footer-text">
+                        <a href="#" class="text-light" >CHAB AIRCRAFT PARTS LLC.</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a  target="_blank">Colorlib</a></p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ***** Footer Area End ***** -->
+
+    <!-- jQuery-2.2.4 js -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js'%}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/bootstrap/popper.min.js'%}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap/bootstrap.min.js'%}"></script>
+    <!-- All Plugins js -->
+    <script src="{% static 'js/others/plugins.js'%}"></script>
+    <!-- Google Maps js -->
+   
+    <!-- Active js -->
+    <script src="{% static 'js/active.js'%}"></script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
